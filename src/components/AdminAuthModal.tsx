@@ -94,9 +94,6 @@ export const AdminAuthModal: React.FC<AdminAuthModalProps> = ({ isOpen, onClose,
                 className="w-full px-4 py-3 rounded-xl bg-[#0D0B12] border border-[#2B2338] focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] text-white text-sm outline-none transition"
               />
             </div>
-            <div className="mt-2 text-[11px] text-gray-400 flex items-center justify-between">
-              <span>{lang === 'ar' ? 'كلمة المرور الافتراضية:' : 'Default Password:'} <code className="text-[#D4AF37] font-mono font-bold bg-[#20182E] px-1.5 py-0.5 rounded">admin123</code></span>
-            </div>
           </div>
 
           <button
