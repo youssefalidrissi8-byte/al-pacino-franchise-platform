@@ -18,8 +18,27 @@ import { ToastContainer } from './components/ToastContainer';
 import { AdminAuthModal } from './components/AdminAuthModal';
 import { AdminLayout } from './components/Admin/AdminLayout';
 
+const LoadingScreen: React.FC = () => {
+  return (
+    <div className="min-h-screen bg-[#0D0B12] text-[#FAF8F5] flex items-center justify-center font-['Tajawal']">
+      <div className="text-center space-y-4 px-6">
+        <div className="mx-auto h-14 w-14 rounded-full border-4 border-[#D4AF37]/30 border-t-[#D4AF37] animate-spin" />
+
+        <div className="space-y-2">
+          <div className="text-xl sm:text-2xl font-bold tracking-wide">
+            AL PACINO BROASTED
+          </div>
+          <div className="text-sm text-[#A3A39E]">
+            جاري تحميل الموقع...
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const MainLanding: React.FC = () => {
-  const { sections, isAdmin } = useApp();
+  const { sections, isAdmin, isLoading } = useApp();
   const [selectedCity, setSelectedCity] = useState<string>('الرياض');
   const [isAdminAuthOpen, setIsAdminAuthOpen] = useState(false);
   const [isAdminDashboardOpen, setIsAdminDashboardOpen] = useState(false);
@@ -29,6 +48,7 @@ const MainLanding: React.FC = () => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.altKey || e.metaKey) && e.key.toLowerCase() === 'a') {
         e.preventDefault();
+
         if (isAdmin) {
           setIsAdminDashboardOpen(true);
         } else {
@@ -36,38 +56,48 @@ const MainLanding: React.FC = () => {
         }
       }
     };
+
     window.addEventListener('keydown', handleKeyDown);
+
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isAdmin]);
 
-  // Map of component renderers by section id (supporting camelCase, kebab-case, and aliases)
+  // Map of component renderers by section id supporting camelCase, kebab-case, and aliases
   const renderSection = (sectionId: string) => {
     switch (sectionId) {
       case 'hero':
         return <HeroSection key="hero" />;
+
       case 'opportunity':
         return <OpportunitySection key="opportunity" />;
+
       case 'story':
         return <StorySection key="story" />;
+
       case 'why-us':
       case 'whyAlPacino':
       case 'why':
         return <WhyAlPacinoSection key="why-us" />;
+
       case 'financials':
       case 'investmentGlance':
       case 'financial':
         return <InvestmentGlanceSection key="financials" />;
+
       case 'jv-model':
       case 'jvModel':
         return <JVModelSection key="jv-model" />;
+
       case 'jv-support':
       case 'jvSupport':
       case 'support':
         return <JVSupportSection key="jv-support" />;
+
       case 'jv-journey':
       case 'jvJourney':
       case 'journey':
         return <JVJourneySection key="jv-journey" />;
+
       case 'expansion':
       case 'cityExpansion':
       case 'cities':
@@ -77,20 +107,33 @@ const MainLanding: React.FC = () => {
             onSelectCity={(city) => setSelectedCity(city)}
           />
         );
+
       case 'investor-form':
       case 'investorForm':
       case 'form':
       case 'lead-form':
       case 'contact':
-        return <InvestorLeadForm key="investor-form" prefilledCity={selectedCity} />;
+        return (
+          <InvestorLeadForm
+            key="investor-form"
+            prefilledCity={selectedCity}
+          />
+        );
+
       case 'final-cta':
       case 'finalCta':
       case 'cta':
         return <FinalCTASection key="final-cta" />;
+
       default:
         return null;
     }
   };
+
+  // Prevent showing default old logo/content before Supabase state loads
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   const sectionsList = sections || [];
 
@@ -121,7 +164,10 @@ const MainLanding: React.FC = () => {
                 key="expansion"
                 onSelectCity={(city) => setSelectedCity(city)}
               />,
-              <InvestorLeadForm key="investor-form" prefilledCity={selectedCity} />,
+              <InvestorLeadForm
+                key="investor-form"
+                prefilledCity={selectedCity}
+              />,
               <FinalCTASection key="final-cta" />,
             ]}
       </main>
