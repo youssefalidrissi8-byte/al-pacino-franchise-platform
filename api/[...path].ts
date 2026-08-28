@@ -7,7 +7,7 @@ import {
   updateLeadStatus,
   addLeadNote,
   deleteLead,
-} from '../src/server/db';
+} from '../src/server/db.js';
 import {
   DEFAULT_CONTENT,
   DEFAULT_THEME,
@@ -15,7 +15,7 @@ import {
   DEFAULT_SEO,
   INITIAL_MEDIA,
   SAMPLE_LEADS,
-} from '../src/defaultData';
+} from '../src/defaultData.js';
 
 const app = express();
 
@@ -325,3 +325,4 @@ app.post('/api/admin/reset-defaults', authMiddleware, async (req, res) => {
 });
 
 export default app;
+

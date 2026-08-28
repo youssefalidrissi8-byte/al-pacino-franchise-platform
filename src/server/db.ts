@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
+﻿import { createClient } from '@supabase/supabase-js';
 import {
   DEFAULT_CONTENT,
   DEFAULT_THEME,
@@ -6,7 +6,7 @@ import {
   DEFAULT_SEO,
   INITIAL_MEDIA,
   SAMPLE_LEADS,
-} from '../defaultData';
+} from '../defaultData.js';
 
 const supabaseUrl =
   process.env.SUPABASE_URL ||
@@ -22,7 +22,7 @@ const supabaseKey =
 export const supabase =
   supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
 
-// ذاكرة محلية مؤقتة كاحتياط
+// ط°ط§ظƒط±ط© ظ…ط­ظ„ظٹط© ظ…ط¤ظ‚طھط© ظƒط§ط­طھظٹط§ط·
 let memoryDb = {
   content: DEFAULT_CONTENT,
   theme: DEFAULT_THEME,
@@ -33,7 +33,7 @@ let memoryDb = {
 };
 
 // ----------------------------------------------------
-// 1. قراءة وحفظ إعدادات الموقع فـ Supabase CMS
+// 1. ظ‚ط±ط§ط،ط© ظˆط­ظپط¸ ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„ظ…ظˆظ‚ط¹ ظپظ€ Supabase CMS
 // ----------------------------------------------------
 
 export async function readDatabaseAsync() {
@@ -101,12 +101,12 @@ export async function writeDatabaseAsync(updateData: any) {
       });
 
       if (error) {
-        console.error('❌ خطأ في حفظ الإعدادات فـ Supabase:', error.message);
+        console.error('â‌Œ ط®ط·ط£ ظپظٹ ط­ظپط¸ ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ ظپظ€ Supabase:', error.message);
       } else {
-        console.log('✅ تم حفظ تعديلات الداشبورد فـ Supabase بنجاح!');
+        console.log('âœ… طھظ… ط­ظپط¸ طھط¹ط¯ظٹظ„ط§طھ ط§ظ„ط¯ط§ط´ط¨ظˆط±ط¯ ظپظ€ Supabase ط¨ظ†ط¬ط§ط­!');
       }
     } catch (err) {
-      console.error('❌ خطأ في حفظ الإعدادات فـ Supabase:', err);
+      console.error('â‌Œ ط®ط·ط£ ظپظٹ ط­ظپط¸ ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ ظپظ€ Supabase:', err);
     }
   } else {
     console.warn('Supabase client is not configured. Changes saved only in memory.');
@@ -121,7 +121,7 @@ export function writeDatabase(updateData: any) {
 }
 
 // ----------------------------------------------------
-// 2. إدارة طلبات المستثمرين Leads
+// 2. ط¥ط¯ط§ط±ط© ط·ظ„ط¨ط§طھ ط§ظ„ظ…ط³طھط«ظ…ط±ظٹظ† Leads
 // ----------------------------------------------------
 
 export async function addLead(leadData: any) {
@@ -129,7 +129,7 @@ export async function addLead(leadData: any) {
     id: Date.now().toString(),
     createdAt: new Date().toISOString(),
     ...leadData,
-    status: 'جديد',
+    status: 'ط¬ط¯ظٹط¯',
   };
 
   if (supabase) {
@@ -147,17 +147,17 @@ export async function addLead(leadData: any) {
           investment_interest:
             leadData.investmentInterest || leadData.investment_interest || '',
           notes: leadData.notes || '',
-          status: 'جديد',
+          status: 'ط¬ط¯ظٹط¯',
         },
       ]);
 
       if (error) {
-        console.error('❌ خطأ حفظ الحجز فـ Supabase:', error.message);
+        console.error('â‌Œ ط®ط·ط£ ط­ظپط¸ ط§ظ„ط­ط¬ط² ظپظ€ Supabase:', error.message);
       } else {
-        console.log('✅ تم حفظ الحجز فـ Supabase!');
+        console.log('âœ… طھظ… ط­ظپط¸ ط§ظ„ط­ط¬ط² ظپظ€ Supabase!');
       }
     } catch (err) {
-      console.error('❌ خطأ حفظ الحجز:', err);
+      console.error('â‌Œ ط®ط·ط£ ط­ظپط¸ ط§ظ„ط­ط¬ط²:', err);
     }
   } else {
     memoryDb.leads = [newLead, ...memoryDb.leads];

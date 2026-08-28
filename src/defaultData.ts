@@ -1,5 +1,11 @@
-import { ContentData, ThemeSettings, SectionConfig, SEOSettings, InvestorLead, MediaItem } from './types';
-
+import type {
+  ContentData,
+  ThemeSettings,
+  SectionConfig,
+  SEOSettings,
+  InvestorLead,
+  MediaItem,
+} from './types.js';
 export const DEFAULT_CONTENT: ContentData = {
   hero: {
     badgeAr: 'فرصة استثمار وشراكة استراتيجية في المملكة 🇸🇦',
