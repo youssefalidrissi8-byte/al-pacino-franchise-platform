@@ -22,8 +22,16 @@ const supabaseKey =
 export const supabase =
   supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
 
-// ط°ط§ظƒط±ط© ظ…ط­ظ„ظٹط© ظ…ط¤ظ‚طھط© ظƒط§ط­طھظٹط§ط·
-let memoryDb = {
+type MemoryDb = {
+  content: any;
+  theme: any;
+  sections: any;
+  seo: any;
+  media: any[];
+  leads: any[];
+};
+
+let memoryDb: MemoryDb = {
   content: DEFAULT_CONTENT,
   theme: DEFAULT_THEME,
   sections: DEFAULT_SECTIONS,
@@ -32,55 +40,74 @@ let memoryDb = {
   leads: SAMPLE_LEADS,
 };
 
+function hasObjectData(value: any) {
+  return value && typeof value === 'object' && !Array.isArray(value) && Object.keys(value).length > 0;
+}
+
+function hasArrayData(value: any) {
+  return Array.isArray(value) && value.length > 0;
+}
+
 // ----------------------------------------------------
-// 1. ظ‚ط±ط§ط،ط© ظˆط­ظپط¸ ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„ظ…ظˆظ‚ط¹ ظپظ€ Supabase CMS
+// Read website settings from Supabase
 // ----------------------------------------------------
 
 export async function readDatabaseAsync() {
-  if (supabase) {
-    try {
-      const { data, error } = await supabase
-        .from('settings')
-        .select('*')
-        .eq('id', 1)
-        .single();
-
-      if (!error && data) {
-        if (data.content && Object.keys(data.content).length > 0) {
-          memoryDb.content = data.content;
-        }
-
-        if (data.theme && Object.keys(data.theme).length > 0) {
-          memoryDb.theme = data.theme;
-        }
-
-        if (data.sections && Object.keys(data.sections).length > 0) {
-          memoryDb.sections = data.sections;
-        }
-
-        if (data.seo && Object.keys(data.seo).length > 0) {
-          memoryDb.seo = data.seo;
-        }
-
-        if (data.media && Array.isArray(data.media) && data.media.length > 0) {
-          memoryDb.media = data.media;
-        }
-      } else if (error) {
-        console.error('Error reading settings from Supabase:', error.message);
-      }
-    } catch (err) {
-      console.error('Error reading settings from Supabase:', err);
-    }
-  } else {
-    console.warn('Supabase client is not configured. Using memory database.');
+  if (!supabase) {
+    console.warn('Supabase client is not configured. Using default memory database.');
+    return memoryDb;
   }
 
-  return memoryDb;
+  try {
+    const { data, error } = await supabase
+      .from('settings')
+      .select('*')
+      .eq('id', 1)
+      .single();
+
+    if (error) {
+      console.error('Error reading settings from Supabase:', error.message);
+      return memoryDb;
+    }
+
+    if (!data) {
+      return memoryDb;
+    }
+
+    if (hasObjectData(data.content)) {
+      memoryDb.content = data.content;
+    }
+
+    if (hasObjectData(data.theme)) {
+      memoryDb.theme = data.theme;
+    }
+
+    if (hasArrayData(data.sections)) {
+      memoryDb.sections = data.sections;
+    }
+
+    if (hasObjectData(data.seo)) {
+      memoryDb.seo = data.seo;
+    }
+
+    if (hasArrayData(data.media)) {
+      memoryDb.media = data.media;
+    }
+
+    return memoryDb;
+  } catch (err) {
+    console.error('Error reading settings from Supabase:', err);
+    return memoryDb;
+  }
 }
 
 export function readDatabase() {
   return memoryDb;
 }
+
+// ----------------------------------------------------
+// Save website settings to Supabase
+// ----------------------------------------------------
 
 export async function writeDatabaseAsync(updateData: any) {
   memoryDb = {
@@ -88,9 +115,15 @@ export async function writeDatabaseAsync(updateData: any) {
     ...updateData,
   };
 
-  if (supabase) {
-    try {
-      const { error } = await supabase.from('settings').upsert({
+  if (!supabase) {
+    throw new Error(
+      'Supabase client is not configured. Check SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in Vercel.'
+    );
+  }
+
+  try {
+    const { error } = await supabase.from('settings').upsert(
+      {
         id: 1,
         content: memoryDb.content,
         theme: memoryDb.theme,
@@ -98,30 +131,40 @@ export async function writeDatabaseAsync(updateData: any) {
         seo: memoryDb.seo,
         media: memoryDb.media,
         updated_at: new Date().toISOString(),
-      });
-
-      if (error) {
-        console.error('â‌Œ ط®ط·ط£ ظپظٹ ط­ظپط¸ ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ ظپظ€ Supabase:', error.message);
-      } else {
-        console.log('âœ… طھظ… ط­ظپط¸ طھط¹ط¯ظٹظ„ط§طھ ط§ظ„ط¯ط§ط´ط¨ظˆط±ط¯ ظپظ€ Supabase ط¨ظ†ط¬ط§ط­!');
+      },
+      {
+        onConflict: 'id',
       }
-    } catch (err) {
-      console.error('â‌Œ ط®ط·ط£ ظپظٹ ط­ظپط¸ ط§ظ„ط¥ط¹ط¯ط§ط¯ط§طھ ظپظ€ Supabase:', err);
-    }
-  } else {
-    console.warn('Supabase client is not configured. Changes saved only in memory.');
-  }
+    );
 
-  return memoryDb;
+    if (error) {
+      console.error('Supabase save error:', error.message);
+      throw error;
+    }
+
+    console.log('Dashboard changes saved successfully in Supabase.');
+    return memoryDb;
+  } catch (err) {
+    console.error('Failed to save dashboard changes in Supabase:', err);
+    throw err;
+  }
 }
 
 export function writeDatabase(updateData: any) {
-  writeDatabaseAsync(updateData);
+  memoryDb = {
+    ...memoryDb,
+    ...updateData,
+  };
+
+  writeDatabaseAsync(updateData).catch((err) => {
+    console.error('Async save failed:', err);
+  });
+
   return memoryDb;
 }
 
 // ----------------------------------------------------
-// 2. ط¥ط¯ط§ط±ط© ط·ظ„ط¨ط§طھ ط§ظ„ظ…ط³طھط«ظ…ط±ظٹظ† Leads
+// Leads management
 // ----------------------------------------------------
 
 export async function addLead(leadData: any) {
@@ -129,12 +172,18 @@ export async function addLead(leadData: any) {
     id: Date.now().toString(),
     createdAt: new Date().toISOString(),
     ...leadData,
-    status: 'ط¬ط¯ظٹط¯',
+    status: 'جديد',
   };
 
-  if (supabase) {
-    try {
-      const { error } = await supabase.from('leads').insert([
+  if (!supabase) {
+    memoryDb.leads = [newLead, ...memoryDb.leads];
+    return newLead;
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from('leads')
+      .insert([
         {
           full_name: leadData.fullName || leadData.full_name || '',
           phone: leadData.phone || '',
@@ -147,83 +196,118 @@ export async function addLead(leadData: any) {
           investment_interest:
             leadData.investmentInterest || leadData.investment_interest || '',
           notes: leadData.notes || '',
-          status: 'ط¬ط¯ظٹط¯',
+          status: 'جديد',
         },
-      ]);
+      ])
+      .select()
+      .single();
 
-      if (error) {
-        console.error('â‌Œ ط®ط·ط£ ط­ظپط¸ ط§ظ„ط­ط¬ط² ظپظ€ Supabase:', error.message);
-      } else {
-        console.log('âœ… طھظ… ط­ظپط¸ ط§ظ„ط­ط¬ط² ظپظ€ Supabase!');
-      }
-    } catch (err) {
-      console.error('â‌Œ ط®ط·ط£ ط­ظپط¸ ط§ظ„ط­ط¬ط²:', err);
+    if (error) {
+      console.error('Supabase lead insert error:', error.message);
+      throw error;
     }
-  } else {
-    memoryDb.leads = [newLead, ...memoryDb.leads];
-  }
 
-  return newLead;
+    if (data) {
+      return {
+        id: data.id,
+        fullName: data.full_name,
+        phone: data.phone,
+        email: data.email,
+        targetCity: data.target_city,
+        hasProposedLocation: data.has_proposed_location,
+        budgetRange: data.budget_range,
+        investmentInterest: data.investment_interest,
+        notes: data.notes,
+        status: data.status,
+        createdAt: data.created_at,
+      };
+    }
+
+    return newLead;
+  } catch (err) {
+    console.error('Failed to save lead in Supabase:', err);
+    throw err;
+  }
 }
 
 export async function getLeads() {
-  if (supabase) {
-    try {
-      const { data, error } = await supabase
-        .from('leads')
-        .select('*')
-        .order('created_at', { ascending: false });
-
-      if (!error && data) {
-        return data.map((item: any) => ({
-          id: item.id,
-          fullName: item.full_name,
-          phone: item.phone,
-          email: item.email,
-          targetCity: item.target_city,
-          hasProposedLocation: item.has_proposed_location,
-          budgetRange: item.budget_range,
-          investmentInterest: item.investment_interest,
-          notes: item.notes,
-          status: item.status,
-          createdAt: item.created_at,
-        }));
-      }
-
-      if (error) {
-        console.error('Error fetching leads from Supabase:', error.message);
-      }
-    } catch (e) {
-      console.error('Error fetching leads:', e);
-    }
+  if (!supabase) {
+    return memoryDb.leads;
   }
 
-  return memoryDb.leads;
+  try {
+    const { data, error } = await supabase
+      .from('leads')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Error fetching leads from Supabase:', error.message);
+      return memoryDb.leads;
+    }
+
+    if (!data) {
+      return memoryDb.leads;
+    }
+
+    return data.map((item: any) => ({
+      id: item.id,
+      fullName: item.full_name,
+      phone: item.phone,
+      email: item.email,
+      targetCity: item.target_city,
+      hasProposedLocation: item.has_proposed_location,
+      budgetRange: item.budget_range,
+      investmentInterest: item.investment_interest,
+      notes: item.notes,
+      status: item.status,
+      createdAt: item.created_at,
+    }));
+  } catch (err) {
+    console.error('Error fetching leads:', err);
+    return memoryDb.leads;
+  }
 }
 
 export function initDatabase() {
-  readDatabaseAsync();
-  console.log('Database initialized and synced with Supabase settings');
+  readDatabaseAsync()
+    .then(() => {
+      console.log('Database initialized and synced with Supabase settings.');
+    })
+    .catch((err) => {
+      console.error('Database initialization failed:', err);
+    });
 }
 
 export async function updateLeadStatus(id: string, status: string) {
-  if (supabase) {
-    try {
-      const { error } = await supabase.from('leads').update({ status }).eq('id', id);
+  if (!supabase) {
+    memoryDb.leads = memoryDb.leads.map((lead: any) =>
+      String(lead.id) === String(id) ? { ...lead, status } : lead
+    );
 
-      if (error) {
-        console.error('Error updating lead status:', error.message);
-      }
-    } catch (err) {
-      console.error('Error updating lead status:', err);
-    }
+    return { id, status };
   }
 
-  memoryDb.leads = memoryDb.leads.map((lead: any) =>
-    lead.id === id ? { ...lead, status } : lead
-  );
+  try {
+    const { error } = await supabase
+      .from('leads')
+      .update({ status })
+      .eq('id', id);
 
-  return { id, status };
+    if (error) {
+      console.error('Error updating lead status:', error.message);
+      throw error;
+    }
+
+    memoryDb.leads = memoryDb.leads.map((lead: any) =>
+      String(lead.id) === String(id) ? { ...lead, status } : lead
+    );
+
+    return { id, status };
+  } catch (err) {
+    console.error('Error updating lead status:', err);
+    throw err;
+  }
 }
 
 export async function addLeadNote(id: string, author: string, comment: string) {
@@ -239,21 +323,27 @@ export async function addLeadNote(id: string, author: string, comment: string) {
 }
 
 export async function deleteLead(id: string) {
-  if (supabase) {
-    try {
-      const { error } = await supabase.from('leads').delete().eq('id', id);
-
-      if (error) {
-        console.error('Error deleting lead:', error.message);
-        return false;
-      }
-    } catch (err) {
-      console.error('Error deleting lead:', err);
-      return false;
-    }
+  if (!supabase) {
+    memoryDb.leads = memoryDb.leads.filter((lead: any) => String(lead.id) !== String(id));
+    return true;
   }
 
-  memoryDb.leads = memoryDb.leads.filter((lead: any) => lead.id !== id);
+  try {
+    const { error } = await supabase
+      .from('leads')
+      .delete()
+      .eq('id', id);
 
-  return true;
+    if (error) {
+      console.error('Error deleting lead:', error.message);
+      throw error;
+    }
+
+    memoryDb.leads = memoryDb.leads.filter((lead: any) => String(lead.id) !== String(id));
+
+    return true;
+  } catch (err) {
+    console.error('Error deleting lead:', err);
+    throw err;
+  }
 }
