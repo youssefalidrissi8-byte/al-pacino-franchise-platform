@@ -70,8 +70,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     },
   ];
 
-  const logoSettings: LogoSettings =
-    theme.logoSettings || defaultLogoSettings;
+  const logoSettings: LogoSettings = theme.logoSettings || defaultLogoSettings;
 
   const isLightBackground =
     theme.backgroundColor.toLowerCase() === '#ffffff' ||
@@ -85,12 +84,12 @@ export const Navbar: React.FC<NavbarProps> = ({
     logoSettings.position === 'center'
       ? 'justify-center'
       : logoSettings.position === 'left'
-      ? lang === 'ar'
-        ? 'justify-end'
-        : 'justify-start'
-      : lang === 'ar'
-      ? 'justify-start'
-      : 'justify-end';
+        ? lang === 'ar'
+          ? 'justify-end'
+          : 'justify-start'
+        : lang === 'ar'
+          ? 'justify-start'
+          : 'justify-end';
 
   const whatsappNumber = content.contact.whatsapp
     ? content.contact.whatsapp.replace(/[^0-9]/g, '')
@@ -102,9 +101,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       : 'Hello, I would like to inquire about the AL PACINO BROASTED JV investment opportunity.';
 
   const whatsappUrl = whatsappNumber
-    ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-        whatsappMessage
-      )}`
+    ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
     : '';
 
   const handleMobileNavClick = (
@@ -145,6 +142,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             relative
             flex-shrink-0
             min-w-0
+
+            max-sm:absolute
+            max-sm:left-4
+            max-sm:top-0
+            max-sm:z-[80]
+            max-sm:justify-start
           `}
         >
           <a
@@ -170,11 +173,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             style={{
               marginTop: `${logoSettings.marginTop || 0}px`,
               marginBottom: `${logoSettings.marginBottom || 0}px`,
-              transform: `translateY(${
-                logoSettings.offsetY || 0
-              }px) scale(${(logoSettings.scale ?? 100) / 100})`,
-              transformOrigin:
-                lang === 'ar' ? 'right center' : 'left center',
+              transform: `translateY(${logoSettings.offsetY || 0}px) scale(${
+                (logoSettings.scale ?? 100) / 100
+              })`,
+              transformOrigin: lang === 'ar' ? 'right center' : 'left center',
               opacity: (logoSettings.opacity ?? 100) / 100,
             }}
           >
@@ -197,9 +199,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     maxHeight: `${logoSettings.heightDesktop || 60}px`,
                     filter: `brightness(${
                       (logoSettings.brightness ?? 100) / 100
-                    }) contrast(${
-                      (logoSettings.contrast ?? 100) / 100
-                    })`,
+                    }) contrast(${(logoSettings.contrast ?? 100) / 100})`,
                   }}
                 />
               </div>
@@ -272,11 +272,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 transition
                 shadow-sm
               "
-              title={
-                lang === 'ar'
-                  ? 'تواصل عبر واتساب'
-                  : 'Chat on WhatsApp'
-              }
+              title={lang === 'ar' ? 'تواصل عبر واتساب' : 'Chat on WhatsApp'}
             >
               <MessageCircle className="w-4 h-4" />
             </a>
@@ -285,9 +281,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Language Switch */}
           <button
             type="button"
-            onClick={() =>
-              setLang(lang === 'ar' ? 'en' : 'ar')
-            }
+            onClick={() => setLang(lang === 'ar' ? 'en' : 'ar')}
             className="
               flex items-center gap-1.5
               px-3 py-1.5
@@ -304,19 +298,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <Globe className="w-3.5 h-3.5 text-[#C19B4A]" />
 
-            <span>
-              {lang === 'ar' ? 'English' : 'العربية'}
-            </span>
+            <span>{lang === 'ar' ? 'English' : 'العربية'}</span>
           </button>
 
           {/* Admin */}
           <button
             type="button"
-            onClick={
-              isAdmin
-                ? onOpenAdminDashboard
-                : onOpenAdminAuth
-            }
+            onClick={isAdmin ? onOpenAdminDashboard : onOpenAdminAuth}
             className={`
               flex items-center gap-1.5
               px-3 py-1.5
@@ -337,15 +325,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                   ? 'لوحة التحكم الإدارية'
                   : 'Admin Dashboard'
                 : lang === 'ar'
-                ? 'دخول الإدارة'
-                : 'Admin Login'
+                  ? 'دخول الإدارة'
+                  : 'Admin Login'
             }
           >
             <Shield
               className={`w-3.5 h-3.5 ${
-                isAdmin
-                  ? 'text-[#C19B4A]'
-                  : 'text-gray-400'
+                isAdmin ? 'text-[#C19B4A]' : 'text-gray-400'
               }`}
             />
 
@@ -355,17 +341,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                   ? 'لوحة الإدارة'
                   : 'Dashboard'
                 : lang === 'ar'
-                ? 'الإدارة'
-                : 'Admin'}
+                  ? 'الإدارة'
+                  : 'Admin'}
             </span>
           </button>
 
           {/* Primary CTA */}
           <a
             href="#investor-form"
-            onClick={(e) =>
-              scrollToSection('investor-form', e)
-            }
+            onClick={(e) => scrollToSection('investor-form', e)}
             className="
               flex items-center gap-1.5
               px-5 py-2
@@ -406,14 +390,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             relative
             z-[100]
             flex-shrink-0
+            mr-auto
           "
         >
           {/* Mobile Language */}
           <button
             type="button"
-            onClick={() =>
-              setLang(lang === 'ar' ? 'en' : 'ar')
-            }
+            onClick={() => setLang(lang === 'ar' ? 'en' : 'ar')}
             className="
               relative
               z-[100]
@@ -434,9 +417,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Mobile Menu Button */}
           <button
             type="button"
-            onClick={() =>
-              setMobileMenuOpen((prev) => !prev)
-            }
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
             className="
               relative
               z-[100]
@@ -450,11 +431,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               transition-transform
               touch-manipulation
             "
-            aria-label={
-              mobileMenuOpen
-                ? 'Close menu'
-                : 'Open menu'
-            }
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? (
@@ -492,9 +469,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <a
               key={link.href}
               href={link.href}
-              onClick={(e) =>
-                handleMobileNavClick(link.href, e)
-              }
+              onClick={(e) => handleMobileNavClick(link.href, e)}
               className="
                 px-4
                 py-2.5
@@ -507,9 +482,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 cursor-pointer
               "
             >
-              {lang === 'ar'
-                ? link.labelAr
-                : link.labelEn}
+              {lang === 'ar' ? link.labelAr : link.labelEn}
             </a>
           ))}
 
@@ -520,10 +493,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               href="#investor-form"
               onClick={(e) => {
                 setMobileMenuOpen(false);
-                scrollToSection(
-                  'investor-form',
-                  e
-                );
+                scrollToSection('investor-form', e);
               }}
               className="
                 w-full
@@ -583,8 +553,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                       ? 'لوحة الإدارة'
                       : 'Admin Panel'
                     : lang === 'ar'
-                    ? 'دخول الإدارة'
-                    : 'Admin Login'}
+                      ? 'دخول الإدارة'
+                      : 'Admin Login'}
                 </span>
               </button>
 
