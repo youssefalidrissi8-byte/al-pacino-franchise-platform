@@ -6,6 +6,7 @@ import type {
   InvestorLead,
   MediaItem,
 } from './types.js';
+
 export const DEFAULT_CONTENT: ContentData = {
   hero: {
     badgeAr: 'فرصة استثمار وشراكة استراتيجية في المملكة 🇸🇦',
@@ -28,18 +29,24 @@ export const DEFAULT_CONTENT: ContentData = {
     bgImageOpacity: 100,
     sectionHeight: 'full',
   },
+
   opportunity: {
     titleAr: 'فرصة الشراكة | INVESTMENT OPPORTUNITY',
     titleEn: 'Investment Opportunity | فرصة الشراكة',
-    paragraph1Ar: 'الباتشينو علامة سعودية متخصصة في البروستد، بُنيت لتقدم تجربة مختلفة تجمع بين هوية ملكية بنفسجية مميزة، بروستد بنكهات وصوصات خاصة، ونظام تشغيلي مدروس وقابل للتوسع.',
-    paragraph1En: 'AL PACINO is a premier Saudi brand specialized in gourmet broasted chicken, built to deliver a distinguished experience combining a signature royal purple identity, proprietary Oscar-grade flavor profiles and sauces, and a rigorously standardized, scalable operational system.',
-    paragraph2Ar: 'نحن لا نبحث فقط عن مستثمر لافتتاح فرع جديد؛ بل نبحث عن شركاء نجاح يشاركوننا رحلة توسع الباتشينو في مدن المملكة من خلال نموذج Joint Venture – JV، مع تولي AL PACINO إدارة وتشغيل الفرع وفق نموذج حق الانتفاع والاتفاقية المبرمة بين الطرفين.',
-    paragraph2En: 'We are not merely looking for capital to open a branch; we are seeking true growth partners to join the expansion of AL PACINO across Saudi cities through a Joint Venture (JV) model, with AL PACINO handling full branch management and day-to-day operations under a usufruct partnership agreement.',
+    paragraph1Ar:
+      'الباتشينو علامة سعودية متخصصة في البروستد، بُنيت لتقدم تجربة مختلفة تجمع بين هوية ملكية بنفسجية مميزة، بروستد بنكهات وصوصات خاصة، ونظام تشغيلي مدروس وقابل للتوسع.',
+    paragraph1En:
+      'AL PACINO is a premier Saudi brand specialized in gourmet broasted chicken, built to deliver a distinguished experience combining a signature royal purple identity, proprietary Oscar-grade flavor profiles and sauces, and a rigorously standardized, scalable operational system.',
+    paragraph2Ar:
+      'نحن لا نبحث فقط عن مستثمر لافتتاح فرع جديد؛ بل نبحث عن شركاء نجاح يشاركوننا رحلة توسع الباتشينو في مدن المملكة من خلال نموذج Joint Venture – JV، مع تولي AL PACINO إدارة وتشغيل الفرع وفق نموذج حق الانتفاع والاتفاقية المبرمة بين الطرفين.',
+    paragraph2En:
+      'We are not merely looking for capital to open a branch; we are seeking true growth partners to join the expansion of AL PACINO across Saudi cities through a Joint Venture (JV) model, with AL PACINO handling full branch management and day-to-day operations under a usufruct partnership agreement.',
     highlightTextAr: 'أنت تستثمر… ونحن نتولى التشغيل.',
     highlightTextEn: 'You invest… we manage and operate.',
     modelBadgeAr: 'نموذج الشراكة الذكية (JV + حق الانتفاع)',
     modelBadgeEn: 'Smart Partnership Model (JV + Usufruct)',
   },
+
   story: {
     titleAr: 'قصتنا | OUR STORY',
     titleEn: 'Our Story | قصتنا',
@@ -50,14 +57,14 @@ export const DEFAULT_CONTENT: ContentData = {
       'لم يُبنَ الباتشينو على الحظ أو على تكرار نموذج مطاعم البروستد التقليدية.',
       'بدأنا بفكرة واضحة: كيف نصنع تجربة بروستد لها شخصية وهوية خاصة بها؟',
       'ومن هنا عملنا على تطوير العلامة خطوة بخطوة، من الهوية وتجربة العميل، إلى النكهات والصوصات، مرورًا بتصميم الفرع ومسارات الإنتاج ومعايير الجودة والخدمة، وصولًا إلى بناء دليل تشغيلي متكامل.',
-      'لأن هدفنا لم يكن بناء فرع ناجح فقط، بل بناء علامة يمكن تكرار نجاحها والتوسع بها في جميع أرجاء المملكة.'
+      'لأن هدفنا لم يكن بناء فرع ناجح فقط، بل بناء علامة يمكن تكرار نجاحها والتوسع بها في جميع أرجاء المملكة.',
     ],
     paragraphsEn: [
       'Our success was never a coincidence.',
       'AL PACINO was not built on luck or simply copying legacy broasted chains.',
       'We started with a definitive mission: How do we craft a broasted dining experience with true character, high-end identity, and memorable culinary authority?',
       'From this conviction, we systematically developed the brand step by step—from visual identity and customer journey, to proprietary marinades and signature sauces, through optimized kitchen engineering, strict quality control protocols, to a comprehensive operational playbook.',
-      'Because our ultimate objective was never just one successful store, but an institutional brand whose triumph can be seamlessly replicated and scaled nationwide.'
+      'Because our ultimate objective was never just one successful store, but an institutional brand whose triumph can be seamlessly replicated and scaled nationwide.',
     ],
     storyImage: '/src/assets/images/al_pacino_story_1787630407673.jpg',
     storyImageBrightness: 100,
@@ -65,67 +72,84 @@ export const DEFAULT_CONTENT: ContentData = {
     captionAr: 'تجربة ضيافة ملكية بنكهة سعودية واثقة',
     captionEn: 'A royal hospitality experience with confident Saudi flair',
   },
+
   whyAlPacino: {
     titleAr: 'لماذا الباتشينو؟ | WHY AL PACINO?',
     titleEn: 'Why AL PACINO? | لماذا الباتشينو؟',
-    subtitleAr: 'ركائز القوة التي تجعل من الباتشينو فرصة استثمارية استثنائية ونموذجاً قابلاً للتوسع السريع',
-    subtitleEn: 'The core pillars establishing AL PACINO as an exceptional, high-yield scalable investment opportunity',
+    subtitleAr:
+      'ركائز القوة التي تجعل من الباتشينو فرصة استثمارية استثنائية ونموذجاً قابلاً للتوسع السريع',
+    subtitleEn:
+      'The core pillars establishing AL PACINO as an exceptional, high-yield scalable investment opportunity',
     cards: [
       {
         id: 'why-1',
         titleAr: 'هوية مختلفة',
         titleEn: 'Distinct Identity',
-        descAr: 'هوية ملكية بنفسجية وحضور بصري مميز يساعدان العلامة على بناء شخصية واضحة في السوق وجذب العملاء بقوة.',
-        descEn: 'A bold royal purple identity and cinematic visual presence that commands immediate brand equity and consumer loyalty.',
+        descAr:
+          'هوية ملكية بنفسجية وحضور بصري مميز يساعدان العلامة على بناء شخصية واضحة في السوق وجذب العملاء بقوة.',
+        descEn:
+          'A bold royal purple identity and cinematic visual presence that commands immediate brand equity and consumer loyalty.',
         icon: 'Crown',
       },
       {
         id: 'why-2',
         titleAr: 'منتج له شخصية',
         titleEn: 'Product with Character',
-        descAr: 'بروستد بنكهات وصوصات خاصة، يقدم تجربة تتجاوز مفهوم البروستد التقليدي ليكون "بروستد بطعم الأوسكار".',
-        descEn: 'Oscar-tier broasted recipe with bespoke marinations and proprietary dipping sauces that transcend conventional fast food.',
+        descAr:
+          'بروستد بنكهات وصوصات خاصة، يقدم تجربة تتجاوز مفهوم البروستد التقليدي ليكون "بروستد بطعم الأوسكار".',
+        descEn:
+          'Oscar-tier broasted recipe with bespoke marinations and proprietary dipping sauces that transcend conventional fast food.',
         icon: 'Award',
       },
       {
         id: 'why-3',
         titleAr: 'تشغيل مبني على نظام',
         titleEn: 'Systemized Operations',
-        descAr: 'تم تطوير دليل تشغيلي متكامل يحدد معايير وإجراءات التشغيل، من استلام المواد والتحضير والإنتاج إلى التعبئة والخدمة والجودة.',
-        descEn: 'Comprehensive SOP manuals covering every step from ingredient supply chain, kitchen prep, to packaging and service excellence.',
+        descAr:
+          'تم تطوير دليل تشغيلي متكامل يحدد معايير وإجراءات التشغيل، من استلام المواد والتحضير والإنتاج إلى التعبئة والخدمة والجودة.',
+        descEn:
+          'Comprehensive SOP manuals covering every step from ingredient supply chain, kitchen prep, to packaging and service excellence.',
         icon: 'Cpu',
       },
       {
         id: 'why-4',
         titleAr: 'إدارة وتشغيل من AL PACINO',
         titleEn: 'Turnkey Management by AL PACINO',
-        descAr: 'يتولى فريق AL PACINO إدارة وتشغيل الفرع وفق معايير العلامة ونظام حق الانتفاع، دون الحاجة إلى دخول الشريك في تفاصيل الإدارة والتشغيل اليومي.',
-        descEn: 'AL PACINO’s executive operations team runs the branch end-to-end, freeing the investor from daily operational burdens.',
+        descAr:
+          'يتولى فريق AL PACINO إدارة وتشغيل الفرع وفق معايير العلامة ونظام حق الانتفاع، دون الحاجة إلى دخول الشريك في تفاصيل الإدارة والتشغيل اليومي.',
+        descEn:
+          'AL PACINO’s executive operations team runs the branch end-to-end, freeing the investor from daily operational burdens.',
         icon: 'Briefcase',
       },
       {
         id: 'why-5',
         titleAr: 'تجربة قابلة للتكرار',
         titleEn: 'Scalable & Replicable Experience',
-        descAr: 'نعمل على توحيد المنتج والخدمة والتشغيل، حتى يحصل العميل على تجربة AL PACINO نفسها مع توسع العلامة في أي مدينة.',
-        descEn: 'Rigid consistency in culinary taste, speed of service, and ambiance ensuring unanimous guest satisfaction across all branches.',
+        descAr:
+          'نعمل على توحيد المنتج والخدمة والتشغيل، حتى يحصل العميل على تجربة AL PACINO نفسها مع توسع العلامة في أي مدينة.',
+        descEn:
+          'Rigid consistency in culinary taste, speed of service, and ambiance ensuring unanimous guest satisfaction across all branches.',
         icon: 'Repeat',
       },
       {
         id: 'why-6',
         titleAr: 'شراكة وليست مجرد استثمار',
         titleEn: 'True Partnership, Not Just Investment',
-        descAr: 'نؤمن بأن نجاح التوسع يعتمد على نجاح الطرفين، ولذلك يقوم نموذجنا على الشراكة، والتشغيل الاحترافي، وبناء قيمة طويلة الأمد.',
-        descEn: 'We align interests completely: when your branch thrives, the brand thrives. We build sustainable, long-term enterprise value.',
+        descAr:
+          'نؤمن بأن نجاح التوسع يعتمد على نجاح الطرفين، ولذلك يقوم نموذجنا على الشراكة، والتشغيل الاحترافي، وبناء قيمة طويلة الأمد.',
+        descEn:
+          'We align interests completely: when your branch thrives, the brand thrives. We build sustainable, long-term enterprise value.',
         icon: 'Handshake',
       },
     ],
   },
+
   investmentGlance: {
     titleAr: 'أرقام الاستثمار في لمحة | AT A GLANCE',
     titleEn: 'Investment at a Glance | أرقام الاستثمار',
     subtitleAr: 'البيانات المالية والتشغيلية التقديرية لإطلاق فرع جديد متكامل',
-    subtitleEn: 'Estimated financial and operational metrics for launching a fully integrated branch',
+    subtitleEn:
+      'Estimated financial and operational metrics for launching a fully integrated branch',
     metrics: [
       {
         id: 'metric-1',
@@ -149,12 +173,12 @@ export const DEFAULT_CONTENT: ContentData = {
       },
       {
         id: 'metric-3',
-        valueAr: '3 أشهر',
-        valueEn: '3 Months',
-        labelAr: 'تكاليف التشغيل المبدئي المقدرة',
-        labelEn: 'Initial Working Capital Runway',
-        sublabelAr: 'محسوبة ضمن حجم الاستثمار الكلي',
-        sublabelEn: 'Factored within total capital scope',
+        valueAr: '5 سنوات',
+        valueEn: '5 Years',
+        labelAr: 'مدة الشراكة',
+        labelEn: 'Partnership Term',
+        sublabelAr: 'قابلة للتجديد حسب الاتفاق',
+        sublabelEn: 'Renewable subject to agreement',
         icon: 'Clock',
       },
       {
@@ -178,16 +202,21 @@ export const DEFAULT_CONTENT: ContentData = {
         icon: 'FileCheck2',
       },
     ],
-    disclaimerAr: 'الأرقام تقديرية، وقد تختلف بحسب المدينة والموقع والإيجار والتصميم والتجهيز والمتطلبات الخاصة بكل فرع. وتحدد الحقوق والالتزامات النهائية وفق الدراسة واتفاقية الشراكة وحق الانتفاع المبرمة بين الأطراف.',
-    disclaimerEn: 'Figures are estimated and may vary based on city, location, lease rates, fit-out specifications, and municipal requirements for each branch. Final rights and obligations are governed strictly by the feasibility study and the formal Joint Venture / Usufruct Agreement signed between parties.',
+    disclaimerAr:
+      'الأرقام تقديرية، وقد تختلف بحسب المدينة والموقع والإيجار والتصميم والتجهيز والمتطلبات الخاصة بكل فرع. وتحدد الحقوق والالتزامات النهائية وفق الدراسة واتفاقية الشراكة وحق الانتفاع المبرمة بين الأطراف.',
+    disclaimerEn:
+      'Figures are estimated and may vary based on city, location, lease rates, fit-out specifications, and municipal requirements for each branch. Final rights and obligations are governed strictly by the feasibility study and the formal Joint Venture / Usufruct Agreement signed between parties.',
   },
+
   jvModel: {
     titleAr: 'كيف تعمل الشراكة؟ | OUR JV MODEL',
     titleEn: 'How the JV Model Works | كيف تعمل الشراكة؟',
     mainStatementAr: 'أنت تستثمر… ونحن نتولى التشغيل.',
     mainStatementEn: 'You Invest… We Operate.',
-    explanationAr: 'يتيح نموذج الشراكة للمستثمر المشاركة في توسع AL PACINO، بينما تتولى إدارة الباتشينو تشغيل وإدارة الفرع وفق نظام حق الانتفاع ومعايير العلامة بأعلى مستويات الجودة والاحترافية.',
-    explanationEn: 'The Joint Venture model enables the investor to capitalize on the rapid expansion of AL PACINO, while AL PACINO’s experienced executive management directs all branch operations, staff, supply chain, and marketing in full compliance with brand standards.',
+    explanationAr:
+      'يتيح نموذج الشراكة للمستثمر المشاركة في توسع AL PACINO، بينما تتولى إدارة الباتشينو تشغيل وإدارة الفرع وفق نظام حق الانتفاع ومعايير العلامة بأعلى مستويات الجودة والاحترافية.',
+    explanationEn:
+      'The Joint Venture model enables the investor to capitalize on the rapid expansion of AL PACINO, while AL PACINO’s experienced executive management directs all branch operations, staff, supply chain, and marketing in full compliance with brand standards.',
     equationPartnerAr: 'استثمار الشريك',
     equationPartnerEn: 'Partner Capital',
     equationPacinoAr: 'خبرة AL PACINO في الإدارة والتشغيل',
@@ -195,86 +224,107 @@ export const DEFAULT_CONTENT: ContentData = {
     equationOutcomeAr: 'شراكة ذكية للنمو والتوسع المستدام',
     equationOutcomeEn: 'Smart Scalable Growth Partnership',
   },
+
   jvSupport: {
     titleAr: 'ماذا نقدم لشريكنا؟ | OUR JV SUPPORT',
     titleEn: 'What We Provide to Our Partner | ماذا نقدم لشريكنا؟',
     subtitleAr: 'دعم شامل يبدأ من الفكرة الأولى ويمتد طوال فترة الشراكة والتشغيل',
-    subtitleEn: 'Comprehensive institutional support spanning from pre-launch to ongoing daily operations',
+    subtitleEn:
+      'Comprehensive institutional support spanning from pre-launch to ongoing daily operations',
     items: [
       {
         id: 'sup-1',
         titleAr: 'اختيار وتقييم الموقع',
         titleEn: 'Site Selection & Feasibility',
-        descAr: 'دراسة وتحليل المواقع المقترحة، الكثافة السكانية، وحركة المرور لضمان أعلى عوائد.',
-        descEn: 'Demographic analysis, foot-traffic auditing, and commercial viability assessments for maximum ROI.',
+        descAr:
+          'دراسة وتحليل المواقع المقترحة، الكثافة السكانية، وحركة المرور لضمان أعلى عوائد.',
+        descEn:
+          'Demographic analysis, foot-traffic auditing, and commercial viability assessments for maximum ROI.',
         icon: 'MapPin',
       },
       {
         id: 'sup-2',
         titleAr: 'التصميم والتجهيز',
         titleEn: 'Architectural Design & Fit-out',
-        descAr: 'توفير المخططات الهندسية المعيارية والهوية المعمارية الملكية مع الإشراف على التجهيز.',
-        descEn: 'Turnkey architectural layouts, equipment specifications, and brand interior aesthetics.',
+        descAr:
+          'توفير المخططات الهندسية المعيارية والهوية المعمارية الملكية مع الإشراف على التجهيز.',
+        descEn:
+          'Turnkey architectural layouts, equipment specifications, and brand interior aesthetics.',
         icon: 'Layout',
       },
       {
         id: 'sup-3',
         titleAr: 'الإدارة والتشغيل',
         titleEn: 'Complete Operations Management',
-        descAr: 'إدارة تشغيلية يومية بالكامل ترفع عن كاهلك مشقة إدارة المطعم وتفاصيل العمالة.',
-        descEn: 'Full daily operational oversight removing all management friction from the investor.',
+        descAr:
+          'إدارة تشغيلية يومية بالكامل ترفع عن كاهلك مشقة إدارة المطعم وتفاصيل العمالة.',
+        descEn:
+          'Full daily operational oversight removing all management friction from the investor.',
         icon: 'Settings',
       },
       {
         id: 'sup-4',
         titleAr: 'دليل التشغيل (SOPs)',
         titleEn: 'Comprehensive SOP Manual',
-        descAr: 'أدلة معيارية صارمة لضمان جودة المنتج وسرعة الخدمة ونظافة الفرع وفق معايير عالمية.',
-        descEn: 'Rigorous standard operating manuals guaranteeing food safety, taste, and speed of service.',
+        descAr:
+          'أدلة معيارية صارمة لضمان جودة المنتج وسرعة الخدمة ونظافة الفرع وفق معايير عالمية.',
+        descEn:
+          'Rigorous standard operating manuals guaranteeing food safety, taste, and speed of service.',
         icon: 'BookOpen',
       },
       {
         id: 'sup-5',
         titleAr: 'التوظيف والتدريب',
         titleEn: 'Recruitment & Team Training',
-        descAr: 'استقطاب الكفاءات وتدريب الطهاة وفريق الخدمة في أكاديمية الباتشينو التشغيلية.',
-        descEn: 'Talent sourcing, culinary onboarding, and front-of-house training in hospitality standards.',
+        descAr:
+          'استقطاب الكفاءات وتدريب الطهاة وفريق الخدمة في أكاديمية الباتشينو التشغيلية.',
+        descEn:
+          'Talent sourcing, culinary onboarding, and front-of-house training in hospitality standards.',
         icon: 'Users',
       },
       {
         id: 'sup-6',
         titleAr: 'دعم الافتتاح',
         titleEn: 'Grand Opening Support',
-        descAr: 'فريق إسناد متخصص يرافق الفرع في مرحلة الافتتاح التجريبي والرسمي لضمان بداية قوية.',
-        descEn: 'Dedicated task force deploying on-ground during soft and grand launch phases.',
+        descAr:
+          'فريق إسناد متخصص يرافق الفرع في مرحلة الافتتاح التجريبي والرسمي لضمان بداية قوية.',
+        descEn:
+          'Dedicated task force deploying on-ground during soft and grand launch phases.',
         icon: 'Sparkles',
       },
       {
         id: 'sup-7',
         titleAr: 'المشتريات وسلسلة التوريد',
         titleEn: 'Procurement & Supply Chain',
-        descAr: 'تأمين المواد الأولية والصوصات الحصرية بأسعار تنافسية مدعومة بعقود توريد مركزية.',
-        descEn: 'Access to central supply contracts, proprietary seasonings, and favorable bulk pricing.',
+        descAr:
+          'تأمين المواد الأولية والصوصات الحصرية بأسعار تنافسية مدعومة بعقود توريد مركزية.',
+        descEn:
+          'Access to central supply contracts, proprietary seasonings, and favorable bulk pricing.',
         icon: 'Truck',
       },
       {
         id: 'sup-8',
         titleAr: 'التسويق والحملات',
         titleEn: 'Omnichannel Marketing',
-        descAr: 'حملات تسويقية رقمية وميدانية تصنع طلباً مستمراً وتزيد من مبيعات الفرع بشكل دوري.',
-        descEn: 'High-impact digital performance marketing, influencer activations, and local store campaigns.',
+        descAr:
+          'حملات تسويقية رقمية وميدانية تصنع طلباً مستمراً وتزيد من مبيعات الفرع بشكل دوري.',
+        descEn:
+          'High-impact digital performance marketing, influencer activations, and local store campaigns.',
         icon: 'Megaphone',
       },
       {
         id: 'sup-9',
         titleAr: 'الجودة والمتابعة المستمرة',
         titleEn: 'Auditing & Quality Assurance',
-        descAr: 'زيارات تفتيش دورية، مراجعة دورية للأرقام، وتقارير أداء مالية وإدارية شفافة للشريك.',
-        descEn: 'Mystery shoppers, regular quality audits, and transparent financial reporting dashboards.',
+        descAr:
+          'زيارات تفتيش دورية، مراجعة دورية للأرقام، وتقارير أداء مالية وإدارية شفافة للشريك.',
+        descEn:
+          'Mystery shoppers, regular quality audits, and transparent financial reporting dashboards.',
         icon: 'LineChart',
       },
     ],
   },
+
   jvJourney: {
     titleAr: 'كيف تبدأ الشراكة؟ | YOUR JV JOURNEY',
     titleEn: 'Your Partnership Journey | كيف تبدأ الشراكة؟',
@@ -285,80 +335,168 @@ export const DEFAULT_CONTENT: ContentData = {
         stepNumber: '01',
         titleAr: 'سجل اهتمامك',
         titleEn: 'Submit Your Interest',
-        descAr: 'تعبئة نموذج طلب الشراكة وتحديد المدينة والميزانية الاستثمارية المتاحة.',
-        descEn: 'Fill out the partnership inquiry form indicating your target city and investment capacity.',
+        descAr:
+          'تعبئة نموذج طلب الشراكة وتحديد المدينة والميزانية الاستثمارية المتاحة.',
+        descEn:
+          'Fill out the partnership inquiry form indicating your target city and investment capacity.',
       },
       {
         stepNumber: '02',
         titleAr: 'اجتماع التعارف',
         titleEn: 'Discovery Meeting',
-        descAr: 'جلسة استشارية أولية لمناقشة التطلعات، شرح نموذج العمل، والإجابة عن استفساراتك.',
-        descEn: 'An initial consultation with our executive team to review expectations and partnership terms.',
+        descAr:
+          'جلسة استشارية أولية لمناقشة التطلعات، شرح نموذج العمل، والإجابة عن استفساراتك.',
+        descEn:
+          'An initial consultation with our executive team to review expectations and partnership terms.',
       },
       {
         stepNumber: '03',
         titleAr: 'اختيار المدينة والموقع',
         titleEn: 'City & Site Evaluation',
-        descAr: 'دراسة الموقع المقترح أو المساعدة في ترشيح أفضل المواقع الحيوية المناسبة.',
-        descEn: 'Analyzing proposed locations or identifying prime commercial real estate in your target city.',
+        descAr:
+          'دراسة الموقع المقترح أو المساعدة في ترشيح أفضل المواقع الحيوية المناسبة.',
+        descEn:
+          'Analyzing proposed locations or identifying prime commercial real estate in your target city.',
       },
       {
         stepNumber: '04',
         titleAr: 'الدراسة والاتفاق',
         titleEn: 'Feasibility & Agreement',
-        descAr: 'إعداد دراسة الجدوى وتوقيع اتفاقية الشراكة (JV) ونموذج حق الانتفاع الرسمي.',
-        descEn: 'Finalizing unit economics, Capex budget, and signing the formal JV Usufruct Agreement.',
+        descAr:
+          'إعداد دراسة الجدوى وتوقيع اتفاقية الشراكة (JV) ونموذج حق الانتفاع الرسمي.',
+        descEn:
+          'Finalizing unit economics, Capex budget, and signing the formal JV Usufruct Agreement.',
       },
       {
         stepNumber: '05',
         titleAr: 'التأسيس والتجهيز',
         titleEn: 'Fit-out & Equipment Setup',
-        descAr: 'البدء في أعمال الديكور وتركيب أحدث معدات القلي والتحضير وفق الهوية الملكية.',
-        descEn: 'Executing interior construction and procuring cutting-edge culinary and POS equipment.',
+        descAr:
+          'البدء في أعمال الديكور وتركيب أحدث معدات القلي والتحضير وفق الهوية الملكية.',
+        descEn:
+          'Executing interior construction and procuring cutting-edge culinary and POS equipment.',
       },
       {
         stepNumber: '06',
         titleAr: 'بناء فريق التشغيل',
         titleEn: 'Staffing & Intensive Training',
-        descAr: 'توظيف الطاقم وتدريبهم على معايير الباتشينو، السلامة الغذائية، والخدمة الممتازة.',
-        descEn: 'Recruiting staff and conducting hands-on training on recipes, hygiene, and guest hospitality.',
+        descAr:
+          'توظيف الطاقم وتدريبهم على معايير الباتشينو، السلامة الغذائية، والخدمة الممتازة.',
+        descEn:
+          'Recruiting staff and conducting hands-on training on recipes, hygiene, and guest hospitality.',
       },
       {
         stepNumber: '07',
         titleAr: 'الافتتاح والتشغيل',
         titleEn: 'Grand Opening & Launch',
-        descAr: 'انطلاق التشغيل التجريبي ثم الافتتاح الرسمي مع حملة تسويقية كبرى تجذب الجمهور.',
-        descEn: 'Commencing soft launch followed by a major grand opening marketing blitz.',
+        descAr:
+          'انطلاق التشغيل التجريبي ثم الافتتاح الرسمي مع حملة تسويقية كبرى تجذب الجمهور.',
+        descEn:
+          'Commencing soft launch followed by a major grand opening marketing blitz.',
       },
       {
         stepNumber: '08',
         titleAr: 'المتابعة والتطوير',
         titleEn: 'Ongoing Growth & Audits',
-        descAr: 'إدارة تشغيلية مستمرة، تقارير مالية دورية، وتحسين دائم للمبيعات والأرباح.',
-        descEn: 'Continuous operational monitoring, monthly financial statements, and revenue growth strategies.',
+        descAr:
+          'إدارة تشغيلية مستمرة، تقارير مالية دورية، وتحسين دائم للمبيعات والأرباح.',
+        descEn:
+          'Continuous operational monitoring, monthly financial statements, and revenue growth strategies.',
       },
     ],
   },
+
   cityExpansion: {
     titleEn: 'WHO WILL TAKE AL PACINO TO THE NEXT CITY?',
     titleAr: 'من سيأخذ الباتشينو إلى المدينة القادمة؟',
     subtitleAr: 'خريطة توسع علامة الباتشينو عبر مدن ومناطق المملكة العربية السعودية',
     subtitleEn: 'AL PACINO expansion roadmap across key metropolitan areas in Saudi Arabia',
     cities: [
-      { id: 'c1', nameAr: 'الرياض', nameEn: 'Riyadh', statusAr: 'فرص متاحة', statusEn: 'Available Slots', isAvailable: true },
-      { id: 'c2', nameAr: 'جدة', nameEn: 'Jeddah', statusAr: 'فرص متاحة', statusEn: 'Available Slots', isAvailable: true },
-      { id: 'c3', nameAr: 'مكة المكرمة', nameEn: 'Makkah', statusAr: 'مطلوبة بشدة', statusEn: 'High Demand', isAvailable: true },
-      { id: 'c4', nameAr: 'المدينة المنورة', nameEn: 'Madinah', statusAr: 'فرص متاحة', statusEn: 'Available Slots', isAvailable: true },
-      { id: 'c5', nameAr: 'الطائف', nameEn: 'Taif', statusAr: 'فرص متاحة', statusEn: 'Available Slots', isAvailable: true },
-      { id: 'c6', nameAr: 'الدمام والخبر', nameEn: 'Dammam & Khobar', statusAr: 'مطلوبة بشدة', statusEn: 'High Demand', isAvailable: true },
-      { id: 'c7', nameAr: 'تبوك', nameEn: 'Tabuk', statusAr: 'فرص متاحة', statusEn: 'Available Slots', isAvailable: true },
-      { id: 'c8', nameAr: 'أبها وخميس مشيط', nameEn: 'Abha & Khamis', statusAr: 'فرص متاحة', statusEn: 'Available Slots', isAvailable: true },
-      { id: 'c9', nameAr: 'القصيم (بريدة وعنيزة)', nameEn: 'Qassim', statusAr: 'فرص متاحة', statusEn: 'Available Slots', isAvailable: true },
-      { id: 'c10', nameAr: 'مدينتك المستهدفة', nameEn: 'Your City', statusAr: 'اقترح مدينتك', statusEn: 'Propose Your City', isAvailable: true },
+      {
+        id: 'c1',
+        nameAr: 'الرياض',
+        nameEn: 'Riyadh',
+        statusAr: 'فرص متاحة',
+        statusEn: 'Available Slots',
+        isAvailable: true,
+      },
+      {
+        id: 'c2',
+        nameAr: 'جدة',
+        nameEn: 'Jeddah',
+        statusAr: 'فرص متاحة',
+        statusEn: 'Available Slots',
+        isAvailable: true,
+      },
+      {
+        id: 'c3',
+        nameAr: 'مكة المكرمة',
+        nameEn: 'Makkah',
+        statusAr: 'مطلوبة بشدة',
+        statusEn: 'High Demand',
+        isAvailable: true,
+      },
+      {
+        id: 'c4',
+        nameAr: 'المدينة المنورة',
+        nameEn: 'Madinah',
+        statusAr: 'فرص متاحة',
+        statusEn: 'Available Slots',
+        isAvailable: true,
+      },
+      {
+        id: 'c5',
+        nameAr: 'الطائف',
+        nameEn: 'Taif',
+        statusAr: 'فرص متاحة',
+        statusEn: 'Available Slots',
+        isAvailable: true,
+      },
+      {
+        id: 'c6',
+        nameAr: 'الدمام والخبر',
+        nameEn: 'Dammam & Khobar',
+        statusAr: 'مطلوبة بشدة',
+        statusEn: 'High Demand',
+        isAvailable: true,
+      },
+      {
+        id: 'c7',
+        nameAr: 'تبوك',
+        nameEn: 'Tabuk',
+        statusAr: 'فرص متاحة',
+        statusEn: 'Available Slots',
+        isAvailable: true,
+      },
+      {
+        id: 'c8',
+        nameAr: 'أبها وخميس مشيط',
+        nameEn: 'Abha & Khamis',
+        statusAr: 'فرص متاحة',
+        statusEn: 'Available Slots',
+        isAvailable: true,
+      },
+      {
+        id: 'c9',
+        nameAr: 'القصيم (بريدة وعنيزة)',
+        nameEn: 'Qassim',
+        statusAr: 'فرص متاحة',
+        statusEn: 'Available Slots',
+        isAvailable: true,
+      },
+      {
+        id: 'c10',
+        nameAr: 'مدينتك المستهدفة',
+        nameEn: 'Your City',
+        statusAr: 'اقترح مدينتك',
+        statusEn: 'Propose Your City',
+        isAvailable: true,
+      },
     ],
     finalStatementAr: 'قد تكون مدينتك هي الفصل القادم في قصة نجاح الباتشينو.',
     finalStatementEn: 'Your city could be the next chapter in AL PACINO’s success story.',
   },
+
   finalCta: {
     titleEn: 'THE NEXT CHAPTER COULD BE YOURS.',
     titleAr: 'نجاحنا لم يكن صدفة… والفصل القادم قد نكتبه معًا.',
@@ -372,6 +510,7 @@ export const DEFAULT_CONTENT: ContentData = {
     ctaTextAr: 'كن شريكًا في الفصل القادم',
     ctaTextEn: 'Be a Partner in the Next Chapter',
   },
+
   contact: {
     whatsapp: '+966500000000',
     phone: '+966500000000',
@@ -417,25 +556,94 @@ export const DEFAULT_THEME: ThemeSettings = {
 };
 
 export const DEFAULT_SECTIONS: SectionConfig[] = [
-  { id: 'hero', name: 'القسم الرئيسي (Hero)', nameEn: 'Hero Section', visible: true, order: 1 },
-  { id: 'opportunity', name: 'فرصة الاستثمار (Opportunity)', nameEn: 'Investment Opportunity', visible: true, order: 2 },
-  { id: 'story', name: 'قصتنا (Our Story)', nameEn: 'Our Story', visible: true, order: 3 },
-  { id: 'whyAlPacino', name: 'لماذا الباتشينو؟ (Why AL PACINO)', nameEn: 'Why AL PACINO', visible: true, order: 4 },
-  { id: 'investmentGlance', name: 'أرقام الاستثمار (At a Glance)', nameEn: 'Investment at a Glance', visible: true, order: 5 },
-  { id: 'jvModel', name: 'نموذج الشراكة (JV Model)', nameEn: 'JV Model', visible: true, order: 6 },
-  { id: 'jvSupport', name: 'دعم الشريك (JV Support)', nameEn: 'JV Support', visible: true, order: 7 },
-  { id: 'jvJourney', name: 'رحلة الشراكة (JV Journey)', nameEn: 'JV Journey', visible: true, order: 8 },
-  { id: 'cityExpansion', name: 'التوسع في المدن (City Expansion)', nameEn: 'City Expansion', visible: true, order: 9 },
-  { id: 'investorForm', name: 'نموذج تسجيل الاهتمام (Lead Form)', nameEn: 'Investor Lead Form', visible: true, order: 10 },
-  { id: 'finalCta', name: 'الدعوة النهائية (Final CTA)', nameEn: 'Final Call to Action', visible: true, order: 11 },
+  {
+    id: 'hero',
+    name: 'القسم الرئيسي (Hero)',
+    nameEn: 'Hero Section',
+    visible: true,
+    order: 1,
+  },
+  {
+    id: 'opportunity',
+    name: 'فرصة الاستثمار (Opportunity)',
+    nameEn: 'Investment Opportunity',
+    visible: true,
+    order: 2,
+  },
+  {
+    id: 'story',
+    name: 'قصتنا (Our Story)',
+    nameEn: 'Our Story',
+    visible: true,
+    order: 3,
+  },
+  {
+    id: 'whyAlPacino',
+    name: 'لماذا الباتشينو؟ (Why AL PACINO)',
+    nameEn: 'Why AL PACINO',
+    visible: true,
+    order: 4,
+  },
+  {
+    id: 'investmentGlance',
+    name: 'أرقام الاستثمار (At a Glance)',
+    nameEn: 'Investment at a Glance',
+    visible: true,
+    order: 5,
+  },
+  {
+    id: 'jvModel',
+    name: 'نموذج الشراكة (JV Model)',
+    nameEn: 'JV Model',
+    visible: true,
+    order: 6,
+  },
+  {
+    id: 'jvSupport',
+    name: 'دعم الشريك (JV Support)',
+    nameEn: 'JV Support',
+    visible: true,
+    order: 7,
+  },
+  {
+    id: 'jvJourney',
+    name: 'رحلة الشراكة (JV Journey)',
+    nameEn: 'JV Journey',
+    visible: true,
+    order: 8,
+  },
+  {
+    id: 'cityExpansion',
+    name: 'التوسع في المدن (City Expansion)',
+    nameEn: 'City Expansion',
+    visible: true,
+    order: 9,
+  },
+  {
+    id: 'investorForm',
+    name: 'نموذج تسجيل الاهتمام (Lead Form)',
+    nameEn: 'Investor Lead Form',
+    visible: true,
+    order: 10,
+  },
+  {
+    id: 'finalCta',
+    name: 'الدعوة النهائية (Final CTA)',
+    nameEn: 'Final Call to Action',
+    visible: true,
+    order: 11,
+  },
 ];
 
 export const DEFAULT_SEO: SEOSettings = {
   pageTitleAr: 'AL PACINO BROASTED | فرصة الاستثمار والشراكة في السعودية',
   pageTitleEn: 'AL PACINO BROASTED | Saudi Investment & JV Opportunity',
-  metaDescriptionAr: 'فرصة استثمارية واعدة بنموذج JV لإطلاق فروع بروستد الباتشينو في السعودية. أنت تستثمر ونحن نتولى التشغيل والإدارة بالكامل.',
-  metaDescriptionEn: 'A high-yield JV franchise opportunity with AL PACINO BROASTED in Saudi Arabia. You invest, we manage and operate.',
-  keywords: 'الباتشينو, بروستد, استثمار مطاعم, امتياز تجاري, فرنشايز, شراكة JV, مطاعم السعودية, استثمار الرياض, استثمار جدة',
+  metaDescriptionAr:
+    'فرصة استثمارية واعدة بنموذج JV لإطلاق فروع بروستد الباتشينو في السعودية. أنت تستثمر ونحن نتولى التشغيل والإدارة بالكامل.',
+  metaDescriptionEn:
+    'A high-yield JV franchise opportunity with AL PACINO BROASTED in Saudi Arabia. You invest, we manage and operate.',
+  keywords:
+    'الباتشينو, بروستد, استثمار مطاعم, امتياز تجاري, فرنشايز, شراكة JV, مطاعم السعودية, استثمار الرياض, استثمار جدة',
   ogImage: '/src/assets/images/al_pacino_hero_1787630392600.jpg',
   favicon: '/favicon.ico',
   canonicalUrl: 'https://alpacino-broasted.sa',
@@ -484,7 +692,8 @@ export const SAMPLE_LEADS: InvestorLead[] = [
     hasProposedLocation: true,
     budgetRange: '700,000 – 1,000,000 ريال',
     investmentInterest: 'عدة فروع',
-    notes: 'مستثمر يمتلك عقار تجاري على طريق الملك عبدالعزيز في الرياض ومتحمس لبدء التجهيز.',
+    notes:
+      'مستثمر يمتلك عقار تجاري على طريق الملك عبدالعزيز في الرياض ومتحمس لبدء التجهيز.',
     createdAt: '2026-08-24T14:30:00Z',
     source: 'الموقع الإلكتروني',
     status: 'qualified',
@@ -492,7 +701,8 @@ export const SAMPLE_LEADS: InvestorLead[] = [
       {
         id: 'c1',
         author: 'فريق الاستثمار',
-        comment: 'تم إجراء مكالمة أولية والمستثمر جاد جداً ولديه سيولة جاهزة. تم تحديد موعد اجتماع.',
+        comment:
+          'تم إجراء مكالمة أولية والمستثمر جاد جداً ولديه سيولة جاهزة. تم تحديد موعد اجتماع.',
         createdAt: '2026-08-24T16:00:00Z',
       },
     ],
@@ -506,7 +716,8 @@ export const SAMPLE_LEADS: InvestorLead[] = [
     hasProposedLocation: false,
     budgetRange: 'أكثر من 1,000,000 ريال',
     investmentInterest: 'شراكة توسع في مدينة / منطقة',
-    notes: 'مهتم بالحصول على حقوق توسع لمنطقة مكة المكرمة وجدة بالكامل.',
+    notes:
+      'مهتم بالحصول على حقوق توسع لمنطقة مكة المكرمة وجدة بالكامل.',
     createdAt: '2026-08-23T11:15:00Z',
     source: 'الموقع الإلكتروني',
     status: 'negotiation',
@@ -514,7 +725,8 @@ export const SAMPLE_LEADS: InvestorLead[] = [
       {
         id: 'c2',
         author: 'الإدارة التنفيذية',
-        comment: 'تم إرسال العرض المبدئي وملف حق الانتفاع لمراجعة المستشار القانوني لديه.',
+        comment:
+          'تم إرسال العرض المبدئي وملف حق الانتفاع لمراجعة المستشار القانوني لديه.',
         createdAt: '2026-08-23T15:20:00Z',
       },
     ],
