@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useApp } from '../context/AppContext';
 import { motion } from 'motion/react';
 import { ArrowLeft, ArrowRight, Sparkles, ChevronDown, Award, TrendingUp, ShieldCheck } from 'lucide-react';
@@ -70,15 +70,15 @@ export const HeroSection: React.FC = () => {
         >
           {lang === 'ar' ? (
             <>
-              كن شريكًا في <br className="hidden sm:block" />
-              <span className="text-[#C19B4A]">الفصل القادم</span>
+              ظƒظ† ط´ط±ظٹظƒظ‹ط§ ظپظٹ <br className="hidden sm:block" />
+              <span className="text-[#C19B4A]">ط§ظ„ظپطµظ„ ط§ظ„ظ‚ط§ط¯ظ…</span>
             </>
           ) : (
             hero.headlineEn
           )}
         </motion.h1>
 
-        {/* Subheadline: بروستد بطعم الأوسكار */}
+        {/* Subheadline: ط¨ط±ظˆط³طھط¯ ط¨ط·ط¹ظ… ط§ظ„ط£ظˆط³ظƒط§ط± */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
@@ -136,49 +136,49 @@ export const HeroSection: React.FC = () => {
         >
           <div className="bg-[#1A1128] rounded-2xl p-4 border border-[#C19B4A]/20 flex flex-col justify-between shadow-xl">
             <p className="text-[#C19B4A] text-xs font-bold uppercase tracking-wider">
-              {lang === 'ar' ? 'الاستثمار التقديري' : 'Est. Investment'}
+              {lang === 'ar' ? 'ط§ظ„ط§ط³طھط«ظ…ط§ط± ط§ظ„طھظ‚ط¯ظٹط±ظٹ' : 'Est. Investment'}
             </p>
             <h3 className="text-2xl font-black text-white mt-2 mb-1">
               600-700K
             </h3>
             <p className="text-[10px] text-gray-400">
-              {lang === 'ar' ? 'ريال سعودي للفرع' : 'SAR per Branch'}
+              {lang === 'ar' ? 'ط±ظٹط§ظ„ ط³ط¹ظˆط¯ظٹ ظ„ظ„ظپط±ط¹' : 'SAR per Branch'}
             </p>
           </div>
 
           <div className="bg-[#1A1128] rounded-2xl p-4 border border-[#C19B4A]/20 flex flex-col justify-between shadow-xl">
             <p className="text-[#C19B4A] text-xs font-bold uppercase tracking-wider">
-              {lang === 'ar' ? 'المساحة المقترحة' : 'Suggested Area'}
+              {lang === 'ar' ? 'ط§ظ„ظ…ط³ط§ط­ط© ط§ظ„ظ…ظ‚طھط±ط­ط©' : 'Suggested Area'}
             </p>
             <h3 className="text-2xl font-black text-white mt-2 mb-1">
-              140 م²
+              140 ظ…آ²
             </h3>
             <p className="text-[10px] text-gray-400">
-              {lang === 'ar' ? 'مناسب للمناطق الحيوية' : 'Ideal for High Traffic'}
+              {lang === 'ar' ? 'ظ…ظ†ط§ط³ط¨ ظ„ظ„ظ…ظ†ط§ط·ظ‚ ط§ظ„ط­ظٹظˆظٹط©' : 'Ideal for High Traffic'}
             </p>
           </div>
 
           <div className="bg-[#1A1128] rounded-2xl p-4 border border-[#C19B4A]/20 flex flex-col justify-between shadow-xl">
             <p className="text-[#C19B4A] text-xs font-bold uppercase tracking-wider">
-              {lang === 'ar' ? 'مدة التأسيس' : 'Setup Duration'}
+              {lang === 'ar' ? 'ظ…ط¯ط© ط§ظ„طھط£ط³ظٹط³' : 'Partnership Term'}
             </p>
             <h3 className="text-2xl font-black text-white mt-2 mb-1">
-              {lang === 'ar' ? '3 أشهر' : '3 Months'}
+              {lang === 'ar' ? '3 ط£ط´ظ‡ط±' : '5 Years'}
             </h3>
             <p className="text-[10px] text-gray-400">
-              {lang === 'ar' ? 'تشغيل وإدارة كاملة' : 'Full Turnkey Setup'}
+              {lang === 'ar' ? 'طھط´ط؛ظٹظ„ ظˆط¥ط¯ط§ط±ط© ظƒط§ظ…ظ„ط©' : 'Renewable subject to agreement'}
             </p>
           </div>
 
           <div className="bg-[#C19B4A] text-black rounded-2xl p-4 flex flex-col justify-between shadow-xl">
             <p className="text-black/70 text-xs font-bold uppercase tracking-wider">
-              {lang === 'ar' ? 'نموذج الشراكة' : 'JV Model'}
+              {lang === 'ar' ? 'ظ†ظ…ظˆط°ط¬ ط§ظ„ط´ط±ط§ظƒط©' : 'JV Model'}
             </p>
             <h3 className="text-xl sm:text-2xl font-black text-black mt-2 mb-1">
-              JV + حق الانتفاع
+              JV + ط­ظ‚ ط§ظ„ط§ظ†طھظپط§ط¹
             </h3>
             <p className="text-[10px] font-bold underline text-black/80">
-              {lang === 'ar' ? 'أنت تستثمر ونحن نشغل' : 'You Invest, We Operate'}
+              {lang === 'ar' ? 'ط£ظ†طھ طھط³طھط«ظ…ط± ظˆظ†ط­ظ† ظ†ط´ط؛ظ„' : 'You Invest, We Operate'}
             </p>
           </div>
         </motion.div>
@@ -195,3 +195,4 @@ export const HeroSection: React.FC = () => {
     </section>
   );
 };
+
