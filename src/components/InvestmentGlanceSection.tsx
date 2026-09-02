@@ -22,10 +22,7 @@ export const InvestmentGlanceSection: React.FC = () => {
             {arabicPart}
           </span>
 
-          <span
-            dir="ltr"
-            className="block font-['Outfit'] text-[#C19B4A] text-2xl sm:text-3xl md:text-4xl tracking-wide"
-          >
+          <span dir="ltr" className="block font-['Outfit']">
             {englishPart}
           </span>
         </div>
