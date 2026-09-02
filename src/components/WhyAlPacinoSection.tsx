@@ -8,6 +8,48 @@ export const WhyAlPacinoSection: React.FC = () => {
   const { lang, content } = useApp();
   const why = content.whyAlPacino;
 
+  const renderBilingualTitle = () => {
+    const title = lang === 'ar' ? why.titleAr : why.titleEn;
+    const parts = title.split('|').map((part) => part.trim());
+
+    if (parts.length >= 2) {
+      const firstPart = parts[0];
+      const secondPart = parts.slice(1).join(' | ');
+
+      if (lang === 'ar') {
+        return (
+          <>
+            <span dir="rtl" className="inline-block">
+              {firstPart}
+            </span>
+            <span className="mx-2 text-[#C19B4A]">|</span>
+            <span dir="ltr" className="inline-block font-['Outfit']">
+              {secondPart}
+            </span>
+          </>
+        );
+      }
+
+      return (
+        <>
+          <span dir="ltr" className="inline-block font-['Outfit']">
+            {firstPart}
+          </span>
+          <span className="mx-2 text-[#C19B4A]">|</span>
+          <span dir="rtl" className="inline-block">
+            {secondPart}
+          </span>
+        </>
+      );
+    }
+
+    return (
+      <span dir={lang === 'ar' ? 'rtl' : 'ltr'} className="inline-block">
+        {title}
+      </span>
+    );
+  };
+
   return (
     <section
       id="why-us"
@@ -21,14 +63,21 @@ export const WhyAlPacinoSection: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1A1128] border border-[#C19B4A]/30 text-xs font-semibold text-[#C19B4A] mb-4">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>{lang === 'ar' ? 'مزايا الشراكة الحصرية' : 'Exclusive Partnership Advantages'}</span>
+            <span>
+              {lang === 'ar'
+                ? 'مزايا الشراكة الحصرية'
+                : 'Exclusive Partnership Advantages'}
+            </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
-            {lang === 'ar' ? why.titleAr : why.titleEn}
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
+            {renderBilingualTitle()}
           </h2>
+
           <p className="mt-3 text-base sm:text-lg text-gray-300 font-normal">
             {lang === 'ar' ? why.subtitleAr : why.subtitleEn}
           </p>
+
           <div className="w-20 h-1 bg-gradient-to-r from-[#4B0082] via-[#C19B4A] to-[#4B0082] mx-auto mt-4 rounded-full" />
         </div>
 
@@ -50,8 +99,12 @@ export const WhyAlPacinoSection: React.FC = () => {
                 {/* Icon & Number Badge */}
                 <div className="flex items-center justify-between mb-5">
                   <div className="w-12 h-12 rounded-xl bg-[#4B0082]/80 border border-[#C19B4A]/30 flex items-center justify-center text-[#C19B4A] group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-black/40 transition-all duration-300">
-                    <DynamicIcon name={card.icon || 'Sparkles'} className="w-6 h-6" />
+                    <DynamicIcon
+                      name={card.icon || 'Sparkles'}
+                      className="w-6 h-6"
+                    />
                   </div>
+
                   <span className="text-xl font-black text-white/20 group-hover:text-[#C19B4A]/40 transition-colors font-['Outfit']">
                     0{index + 1}
                   </span>
@@ -70,7 +123,9 @@ export const WhyAlPacinoSection: React.FC = () => {
 
               {/* Bottom Subtle Indicator */}
               <div className="mt-5 pt-3.5 border-t border-[#2B2338] flex items-center justify-between text-xs text-gray-400 group-hover:text-[#C19B4A] transition-colors">
-                <span className="font-semibold">{lang === 'ar' ? 'نموذج AL PACINO' : 'AL PACINO Model'}</span>
+                <span className="font-semibold">
+                  {lang === 'ar' ? 'نموذج AL PACINO' : 'AL PACINO Model'}
+                </span>
                 <span>✦</span>
               </div>
             </motion.div>
