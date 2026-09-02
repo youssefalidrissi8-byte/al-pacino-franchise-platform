@@ -127,6 +127,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           gap-3 sm:gap-4
           overflow-visible
           relative
+          max-sm:[direction:ltr]
         "
       >
         {/* =========================
@@ -142,12 +143,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             relative
             flex-shrink-0
             min-w-0
-
-            max-sm:absolute
-            max-sm:left-4
-            max-sm:top-0
-            max-sm:z-[80]
-            max-sm:justify-start
           `}
         >
           <a
@@ -192,7 +187,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     duration-200
                     group-hover:scale-105
                     pointer-events-auto
-                    w-[150px]
+                    w-[105px]
                     sm:w-[190px]
                   "
                   style={{
@@ -390,7 +385,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             relative
             z-[100]
             flex-shrink-0
-            mr-auto
           "
         >
           {/* Mobile Language */}
