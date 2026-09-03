@@ -80,16 +80,18 @@ export const Navbar: React.FC<NavbarProps> = ({
     ? logoSettings.darkLogoUrl || logoSettings.lightLogoUrl
     : logoSettings.lightLogoUrl || logoSettings.darkLogoUrl;
 
+  /*
+    Important:
+    - Mobile alignment is fixed with max-sm classes below.
+    - Desktop alignment uses sm: classes only.
+    - This prevents the logo from moving when switching Arabic/English.
+  */
   const logoAlignmentClass =
     logoSettings.position === 'center'
-      ? 'justify-center'
+      ? 'sm:justify-center'
       : logoSettings.position === 'left'
-        ? lang === 'ar'
-          ? 'justify-end'
-          : 'justify-start'
-        : lang === 'ar'
-          ? 'justify-start'
-          : 'justify-end';
+        ? 'sm:justify-start'
+        : 'sm:justify-end';
 
   const whatsappNumber = content.contact.whatsapp
     ? content.contact.whatsapp.replace(/[^0-9]/g, '')
@@ -159,10 +161,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             href="#"
             onClick={(e) => {
               e.preventDefault();
+
               window.scrollTo({
                 top: 0,
                 behavior: 'smooth',
               });
+
               setMobileMenuOpen(false);
             }}
             className="
@@ -182,7 +186,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               transform: `translateY(${logoSettings.offsetY || 0}px) scale(${
                 (logoSettings.scale ?? 100) / 100
               })`,
-              transformOrigin: lang === 'ar' ? 'right center' : 'left center',
+              transformOrigin: 'left center',
               opacity: (logoSettings.opacity ?? 100) / 100,
             }}
           >
@@ -311,6 +315,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             "
           >
             <Globe className="w-3.5 h-3.5 text-[#C19B4A]" />
+
             <span>{lang === 'ar' ? 'English' : 'العربية'}</span>
           </button>
 
