@@ -152,6 +152,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             flex-shrink-0
             min-w-0
             max-sm:justify-start
+            max-sm:ml-4
           `}
         >
           <a
