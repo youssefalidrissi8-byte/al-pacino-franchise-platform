@@ -21,7 +21,7 @@ const defaultLogoSettings: LogoSettings = {
   darkLogoUrl: '',
   widthDesktop: 190,
   heightDesktop: 52,
-  widthMobile: 120,
+  widthMobile: 150,
   position: 'right',
   marginTop: 0,
   marginBottom: 0,
@@ -132,15 +132,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           justify-between
           gap-3
           sm:gap-4
-          overflow-hidden
+          overflow-visible
           relative
-          w-full
-          max-w-full
+          max-sm:[direction:ltr]
         "
       >
         {/* =========================
             BRAND LOGO
-            في الموبايل: order-2 باش يجي فاليسار مع RTL
         ========================== */}
         <div
           className={`
@@ -153,7 +151,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             relative
             flex-shrink-0
             min-w-0
-            max-sm:order-2
             max-sm:justify-start
           `}
         >
@@ -184,7 +181,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               transform: `translateY(${logoSettings.offsetY || 0}px) scale(${
                 (logoSettings.scale ?? 100) / 100
               })`,
-              transformOrigin: lang === 'ar' ? 'left center' : 'left center',
+              transformOrigin: lang === 'ar' ? 'right center' : 'left center',
               opacity: (logoSettings.opacity ?? 100) / 100,
             }}
           >
@@ -200,15 +197,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                     duration-200
                     group-hover:scale-105
                     pointer-events-auto
-                    w-[92px]
+                    w-[105px]
                     sm:w-[190px]
                   "
                   style={{
-                    maxHeight: `${
-                      window.innerWidth < 640
-                        ? Math.min(logoSettings.heightDesktop || 60, 58)
-                        : logoSettings.heightDesktop || 60
-                    }px`,
+                    maxHeight: `${logoSettings.heightDesktop || 60}px`,
                     filter: `brightness(${
                       (logoSettings.brightness ?? 100) / 100
                     }) contrast(${(logoSettings.contrast ?? 100) / 100})`,
@@ -269,6 +262,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             DESKTOP ACTIONS
         ========================== */}
         <div className="hidden sm:flex items-center gap-2.5">
+          {/* WhatsApp */}
           {whatsappUrl && (
             <a
               href={whatsappUrl}
@@ -292,6 +286,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </a>
           )}
 
+          {/* Language Switch */}
           <button
             type="button"
             onClick={() => setLang(lang === 'ar' ? 'en' : 'ar')}
@@ -318,6 +313,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span>{lang === 'ar' ? 'English' : 'العربية'}</span>
           </button>
 
+          {/* Admin */}
           <button
             type="button"
             onClick={isAdmin ? onOpenAdminDashboard : onOpenAdminAuth}
@@ -366,6 +362,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </span>
           </button>
 
+          {/* Primary CTA */}
           <a
             href="#investor-form"
             onClick={(e) => scrollToSection('investor-form', e)}
@@ -402,7 +399,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* =========================
             MOBILE CONTROLS
-            في الموبايل: order-1 باش يبقاو فاليمين مع RTL
+            Always on the right side in mobile
         ========================== */}
         <div
           className="
@@ -413,9 +410,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             relative
             z-[100]
             flex-shrink-0
-            max-sm:order-1
+            max-sm:[direction:ltr]
           "
         >
+          {/* Mobile Language */}
           <button
             type="button"
             onClick={() => setLang(lang === 'ar' ? 'en' : 'ar')}
@@ -437,6 +435,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {lang === 'ar' ? 'EN' : 'عربي'}
           </button>
 
+          {/* Mobile Menu Button */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
@@ -485,11 +484,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             flex-col
             gap-3
             shadow-2xl
-            w-full
-            max-w-full
-            overflow-x-hidden
           "
         >
+          {/* Mobile Navigation Links */}
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -511,7 +508,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             </a>
           ))}
 
+          {/* Bottom Actions */}
           <div className="pt-2 border-t border-[#2B2338] flex flex-col gap-2.5">
+            {/* CTA */}
             <a
               href="#investor-form"
               onClick={(e) => {
@@ -538,7 +537,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                 : content.hero.ctaPrimaryEn}
             </a>
 
+            {/* Admin + WhatsApp */}
             <div className="flex items-center gap-2">
+              {/* Admin */}
               <button
                 type="button"
                 onClick={() => {
@@ -580,6 +581,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </span>
               </button>
 
+              {/* WhatsApp */}
               {whatsappUrl && (
                 <a
                   href={whatsappUrl}
